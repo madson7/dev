@@ -1,0 +1,5 @@
+# Requisitos
+- Java
+- Tomcat
+- Maven
+

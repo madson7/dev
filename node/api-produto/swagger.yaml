@@ -1,0 +1,79 @@
+openapi: 3.0.0
+info:
+  title: API de Produtos
+  description: Uma API para gerenciar produtos
+  version: 1.0.0
+# servers:
+#   - url: http://localhost:8080
+paths:
+  /produtos:
+    get:
+      summary: Retorna a lista de todos os produtos
+      responses:
+        '200':
+          description: Lista de produtos
+    post:
+      summary: Cria um novo produto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  example: Camiseta
+                preco:
+                  type: number
+                  example: 29.90
+                descricao:
+                  type: string
+                  example: Camiseta de algodão
+      responses:
+        '201':
+          description: Produto criado com sucesso
+    delete:
+      summary: Exclui todos os produtos
+      responses:
+        '204':
+          description: Produtos excluídos com sucesso
+  /produtos/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        description: ID do produto a ser buscado
+        schema:
+          type: integer
+    get:
+      summary: Retorna os detalhes de um produto específico
+      responses:
+        '200':
+          description: Detalhes do produto
+    put:
+      summary: Atualiza os detalhes de um produto específico
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  example: Camiseta
+                preco:
+                  type: number
+                  example: 29.90
+                descricao:
+                  type: string
+                  example: Camiseta de algodão
+      responses:
+        '200':
+          description: Produto atualizado com sucesso
+    delete:
+      summary: Exclui um produto específico
+      responses:
+        '204':
+          description: Produto excluído com sucesso
